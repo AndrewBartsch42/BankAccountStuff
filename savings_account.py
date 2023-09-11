@@ -2,7 +2,8 @@ from account import account
 
 class savings_account(account):
     # constructor
-    def __init__(self, account_name, account_balance, account_password):
+    def __init__(self, account_name, account_balance, account_password, id):
+        self.id = id
         self.name = account_name
         self.balance = float(account_balance)
         self.password = account_password

@@ -4,11 +4,13 @@ from savings_account import savings_account
 
 
 class main:
+    
     def __init__(self):
         self.running = True
-        account1 = account()
+  
     
-    def menu(self):
+    def menu(self, accounts):
+        id = len(accounts)
         print("---------------------")
         print("1 for create account")
         print("2 for change balance")
@@ -22,23 +24,25 @@ class main:
             account1_password = input("What is your password? ")
             account1_type = int(input("Checkings or savings (press 1 for checkings and 2 for savings)"))
             if (account1_type == 1):
-                self.account1 = checking_account(account1_name, account1_balance, account1_password)
+                accounts.append(checking_account(account1_name, account1_balance, account1_password, id))
             if (account1_type == 2):
-                self.account1 = savings_account(account1_name, account1_balance, account1_password)
+                accounts.append(savings_account(account1_name, account1_balance, account1_password, id))
+            account.show(self, accounts)
         if (menu_input == 2):
-            self.account1.change_balance()
+            account.change_balance(self, accounts)
         if (menu_input == 3):
-            self.account1.show_balance()
+            account.show_balance(self, accounts)
         if (menu_input == 4):
             self.running = False
-        else:
-            print("invalid input please try again")
+        if(menu_input != 1 or 2 or 3 or 4):
             return None
 if __name__ == '__main__':
     
     main = main()
+    accounts = []
+    print(len(accounts))
     while (main.running == True):
-        main.menu()
+        main.menu(accounts)
 
 
 
